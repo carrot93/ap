@@ -1,25 +1,25 @@
-# ap --`auto-pager`
+# ap--`auto-pager`
 
 ap est un utilitaire shell qui permet à la sortie d'autres commandes shell d'entrer automatiquement en mode de retournement de page interactif.
 
-ap se compose de deux parties, un programme binaire écrit en Go qui capture la sortie des commandes et prend en charge le retournement de page, et un ensemble de scripts shell qui créent un wrapper portant le même nom pour une liste de commandes spécifiée par l'utilisateur.
+ap se compose de deux parties, un programme binaire écrit en Go qui capture la sortie des commandes et prend en charge le retournement de page, et un ensemble de scripts shell qui créent un wrapper du même nom pour une liste de commandes spécifiée par l'utilisateur.
 
-L'utilisation des commandes après le bouclage est la même qu'auparavant et ne devrait pas changer les habitudes de l'utilisateur ni causer de problèmes.
+L'utilisation des commandes après le wrap est la même qu'avant et ne devrait pas changer les habitudes de l'utilisateur ni causer de problèmes.
 
-Lisez ceci dans d'autres langues :[Anglais](README.en.md),[Chinois simplifié](README.md),[chinois traditionnel](README.zh-TW.md),[arabe](README.ar.md),[Français](README.fr.md),[Non.](README.hi.md)
+Lisez ceci dans d'autres langues :[Anglais](README.en.md),[Chinois simplifié](README.md),[chinois traditionnel](README.zh-TW.md),[arabe](README.ar.md),[Français](README.fr.md),[Non](README.hi.md)
 
-ap est un outil shell qui permet à la sortie d'autres commandes shell d'entrer automatiquement en mode de pagination interactive.
+ap est un outil shell qui permet à la sortie d'autres commandes shell d'entrer automatiquement en mode de tournage de page interactif.
 
-ap se compose de deux parties, un programme binaire écrit en langage Go, chargé de capturer la sortie de la commande et de prendre en charge le changement de page,
-et un ensemble de scripts shell responsables de la création d'un wrapper du même nom pour une liste de commandes spécifiée par l'utilisateur.
+ap se compose de deux parties, un programme binaire écrit en langage Go, chargé de capturer le résultat de la commande et de prendre en charge le tournage des pages,
+et un ensemble de scripts shell chargés de créer des wrappers du même nom pour les listes de commandes spécifiées par l'utilisateur.
 
-L'utilisation de la commande après le bouclage est la même que celle d'origine, et les habitudes de fonctionnement de l'utilisateur ne doivent pas être modifiées, et cela ne causera pas de confusion à l'utilisateur.
+L'utilisation de la commande après le wrap est la même qu'avant, et les habitudes de fonctionnement de l'utilisateur ne doivent pas être modifiées, et cela ne causera pas de problèmes à l'utilisateur.
 
 ## Installer
 
     go install github.com/flw-cn/ap@master
 
-## configurer
+## configuration
 
 -   `bash`(#frapper)
 -   `fish`(#`fish`)
@@ -33,7 +33,7 @@ L'utilisation de la commande après le bouclage est la même que celle d'origine
 eval "$(ap --bash)"
 ```
 
-ap encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez le re-personnaliser via des variables d'environnement :
+ap encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez re-personnaliser via des variables d'environnement :
 
 ```sh
 AUTO_PAGER_CMDS=(go cargo make)
@@ -47,13 +47,13 @@ AUTO_PAGER_CMDS_EXTRA=(ps last)
 eval "$(ap --bash)"
 ```
 
-De plus, ap peut également être utilisé avec[grc](https://github.com/garabik/grc)En travaillant ensemble, grc peut être installé en utilisant Homebrew sous macOS :
+De plus, ap peut également être utilisé avec[grc](https://github.com/garabik/grc)En travaillant ensemble, grc peut être installé à l'aide de Homebrew sous macOS :
 
 ```sh
 brew install grc
 ```
 
-ap + grc encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez le re-personnaliser via des variables d'environnement :
+ap + grc encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez re-personnaliser via des variables d'environnement :
 
 ```sh
 AUTO_PAGER_CMDS_WITH_GRC=(ps last dig diff)
@@ -67,7 +67,7 @@ AUTO_PAGER_CMDS_WITH_GRC_EXTRA=(ps last)
 eval "$(ap --bash)"
 ```
 
-De plus, les variables d'environnement`$AUTO_PAGER_MIN_HEIGHT`Vous pouvez contrôler le nombre minimum de lignes pour démarrer la pagination :
+De plus, la variable d'environnement`$AUTO_PAGER_MIN_HEIGHT`Vous pouvez contrôler le nombre minimum de lignes avec lesquelles démarrer la pagination :
 
 ```sh
 AUTO_PAGER_MIN_HEIGHT=30        # 输出超过 30 行时才开始分页
@@ -81,7 +81,7 @@ AUTO_PAGER_MIN_HEIGHT='-50'     # 输出超过终端窗口高度的 50% 时才�
 eval "$(ap --bash)"
 ```
 
-Si non spécifié`AUTO_PAGER_MIN_HEIGHT`,La valeur par défaut est`-80`,Tout de suite`80%`。
+si non précisé`AUTO_PAGER_MIN_HEIGHT`,La valeur par défaut est`-80`,Tout de suite`80%`。
 
 ### `fish`
 
@@ -91,7 +91,7 @@ Si non spécifié`AUTO_PAGER_MIN_HEIGHT`,La valeur par défaut est`-80`,Tout de 
 ap --fish | source
 ```
 
-ap encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez le re-personnaliser via des variables d'environnement :
+ap encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez re-personnaliser via des variables d'environnement :
 
 ```sh
 set AUTO_PAGER_CMDS go cargo make
@@ -105,13 +105,13 @@ set AUTO_PAGER_CMDS_EXTRA ps last
 ap --fish | source
 ```
 
-De plus, ap peut également être utilisé avec[grc](https://github.com/garabik/grc)En travaillant ensemble, grc peut être installé en utilisant Homebrew sous macOS :
+De plus, ap peut également être utilisé avec[grc](https://github.com/garabik/grc)En travaillant ensemble, grc peut être installé à l'aide de Homebrew sous macOS :
 
 ```sh
 brew install grc
 ```
 
-ap + grc encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez le re-personnaliser via des variables d'environnement :
+ap + grc encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez re-personnaliser via des variables d'environnement :
 
 ```sh
 set AUTO_PAGER_CMDS_WITH_GRC ps last dig diff
@@ -125,7 +125,7 @@ set AUTO_PAGER_CMDS_WITH_GRC_EXTRA ps last
 ap --fish | source
 ```
 
-De plus, les variables d'environnement`$AUTO_PAGER_MIN_HEIGHT`Vous pouvez contrôler le nombre minimum de lignes pour démarrer la pagination :
+De plus, la variable d'environnement`$AUTO_PAGER_MIN_HEIGHT`Vous pouvez contrôler le nombre minimum de lignes avec lesquelles démarrer la pagination :
 
 ```sh
 set AUTO_PAGER_MIN_HEIGHT 30        # 输出超过 30 行时才开始分页
@@ -139,7 +139,7 @@ set AUTO_PAGER_MIN_HEIGHT -50     # 输出超过终端窗口高度的 50% 时才
 ap --fish | source
 ```
 
-Si non spécifié`AUTO_PAGER_MIN_HEIGHT`,La valeur par défaut est`-80`,Tout de suite`80%`。
+si non précisé`AUTO_PAGER_MIN_HEIGHT`,La valeur par défaut est`-80`,Tout de suite`80%`。
 
 ### `zsh`
 
@@ -149,7 +149,7 @@ Si non spécifié`AUTO_PAGER_MIN_HEIGHT`,La valeur par défaut est`-80`,Tout de 
 eval "$(ap --zsh)"
 ```
 
-ap encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez le re-personnaliser via des variables d'environnement :
+ap encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez re-personnaliser via des variables d'environnement :
 
 ```sh
 AUTO_PAGER_CMDS=(go cargo make)
@@ -163,13 +163,13 @@ AUTO_PAGER_CMDS_EXTRA=(ps last)
 eval "$(ap --zsh)"
 ```
 
-De plus, ap peut également être utilisé avec[grc](https://github.com/garabik/grc)En travaillant ensemble, grc peut être installé en utilisant Homebrew sous macOS :
+De plus, ap peut également être utilisé avec[grc](https://github.com/garabik/grc)En travaillant ensemble, grc peut être installé à l'aide de Homebrew sous macOS :
 
 ```sh
 brew install grc
 ```
 
-ap + grc encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez le re-personnaliser via des variables d'environnement :
+ap + grc encapsule un lot de commandes par défaut. Si vous n'êtes pas satisfait, vous pouvez re-personnaliser via des variables d'environnement :
 
 ```sh
 AUTO_PAGER_CMDS_WITH_GRC=(ps last dig diff)
@@ -183,7 +183,7 @@ AUTO_PAGER_CMDS_WITH_GRC_EXTRA=(ps last)
 eval "$(ap --zsh)"
 ```
 
-De plus, les variables d'environnement`$AUTO_PAGER_MIN_HEIGHT`Vous pouvez contrôler le nombre minimum de lignes pour démarrer la pagination :
+De plus, la variable d'environnement`$AUTO_PAGER_MIN_HEIGHT`Vous pouvez contrôler le nombre minimum de lignes avec lesquelles démarrer la pagination :
 
 ```sh
 AUTO_PAGER_MIN_HEIGHT=30        # 输出超过 30 行时才开始分页
@@ -197,40 +197,40 @@ AUTO_PAGER_MIN_HEIGHT='-50'     # 输出超过终端窗口高度的 50% 时才�
 eval "$(ap --zsh)"
 ```
 
-Si non spécifié`AUTO_PAGER_MIN_HEIGHT`，默认为 `-80`,Tout de suite`80%`。
+si non précisé`AUTO_PAGER_MIN_HEIGHT`,La valeur par défaut est`-80`,Tout de suite`80%`。
 
 ## utiliser
 
-Les commandes qui ont subi un wrap ap doivent simplement être utilisées comme d'habitude.
+Les commandes qui ont été enveloppées doivent simplement être utilisées comme d'habitude.
 S'il y a trop de sortie, la variable d'environnement sera appelée automatiquement`$PAGER`Le téléavertisseur spécifié effectue la pagination.
 
-si votre`$PAGER`Les variables sont spéciales et ne peuvent pas être adaptées à ap. Vous pouvez également passer des variables d'environnement`$AP_PAGER`Réglez le téléavertisseur séparément pour ap.
+si ton`$PAGER`Les variables sont spéciales et ne peuvent pas être adaptées à ap, vous pouvez également utiliser des variables d'environnement`$AP_PAGER`Réglez le téléavertisseur individuellement pour ap.
 
-si`$AP_PAGER`et`$PAGER`ne sont pas spécifiés, alors utilisera`less -Fr`。
+si`$AP_PAGER`et`$PAGER`Ni l'un ni l'autre n'est spécifié, alors le`less -Fr`。
 
 Les conditions suivantes ne démarreront pas le téléavertisseur :
 
 -   Lorsque le contenu de sortie est trop petit, voir`$AUTO_PAGER_MIN_HEIGHT`。
--   Lorsque ap détecte que la sortie de la commande contient`ESC [?1049h`séquence, la commande est déterminée comme étant une application plein écran.
--   Lorsque la commande n'a pas encore été exécutée. Le téléavertisseur ne démarre pas tant que l'exécution de la commande n'est pas terminée.
-    -   `ping`et`tcpdump`et d'autres commandes de ce type, vous devez appuyer sur`Ctrl-C`La pagination ne démarre pas avant la commande terminate.
-    -   `python`et`gdb`Ces commandes doivent attendre la fin de la commande avant de démarrer la pagination.
+-   Lorsqu'ap détecte que la sortie de la commande contient`ESC [?1049h` 序列时，此时命令被判定为全荧幕应用。
+-   Lorsque la commande n’a pas terminé son exécution. Le téléavertisseur ne démarrera pas tant que l'exécution de la commande n'est pas terminée.
+    -   `ping`et`tcpdump`Ces commandes doivent d'abord être appuyées`Ctrl-C`La pagination ne démarre pas tant que la commande n'est pas terminée.
+    -   `python`et`gdb`De telles commandes doivent attendre la fin de la commande avant de lancer la pagination.
 
 ## Problème commun
 
 -   Cela affectera-t-il la sortie colorée de la commande ?
     -   Ne le fera pas.
--   Il existe des commandes qui détectent le terminal et fournissent une sortie différente pour le mode terminal et le mode non terminal, changera-t-il sa sortie ?
+-   Une commande qui détecte un terminal et fournit une sortie différente pour les modes terminal et non terminal modifie-t-elle sa sortie ?
     -   Ne le fera pas.
--   Comment puis-je diagnostiquer si je soupçonne que ap affecte la sortie de la commande ?
-    -   tu peux l'utiliser`command foo`éxécuter`foo`, de sorte que ap ne soit pas appelé.
--   Si j'ajoute habituellement la commande à la commande ap`| less`, y aura-t-il un problème ?
+-   Comment puis-je diagnostiquer si je soupçonne qu'ap affecte la sortie d'une commande ?
+    -   tu peux l'utiliser`command foo`éxécuter`foo`, pour que ap ne soit pas appelé.
+-   Si j'ajoute habituellement après la commande ap`| less`, est-ce que quelque chose va mal ?
     -   Ne le fera pas.
--   La commande ap peut-elle toujours rediriger sa sortie ?
-    -   Pouvez.
--   La saisie semi-automatique des commandes AP sera-t-elle interrompue ?
+-   Une commande ap peut-elle également rediriger sa sortie ?
+    -   Peut.
+-   La saisie semi-automatique des commandes ap'd sera-t-elle interrompue ?
     -   Ne le fera pas.
--   ap prend en charge des choses comme`python`、`gdb`Une telle application interactive ?
-    -   Support. Mais comme ces applications produisent des caractères de contrôle, le contenu que vous voyez après la pagination peut être un peu désordonné.
--   ap prend en charge des choses comme`htop`、`vim`Une application plein écran comme celle-ci ?
-    -   Comment dire, je ne peux pas me tromper de toute façon, mais je ne vois pas l'intérêt pratique d'associer ap avec eux.
+-   support ap comme`python`、`gdb`Une telle application interactive ?
+    -   soutien. Cependant, étant donné que ces applications génèrent certains caractères de contrôle, le contenu que vous voyez après la pagination peut être un peu désordonné.
+-   support ap comme`htop`、`vim`Une telle application en plein écran ?
+    -   Comment le dire, ça ne peut pas se tromper de toute façon, mais je n'arrive pas à comprendre quel est l'intérêt pratique de coupler ap avec eux.
