@@ -1,12 +1,12 @@
-# ap--`auto-pager`
+# 美聯社——`auto-pager`
 
 ap 是一個 shell 實用程序，它允許其他 shell 命令的輸出自動進入交互式翻頁模式。
 
-ap 由兩部分組成，一個用 Go 編寫的二進製程序，它捕獲命令的輸出並支持頁面翻轉，以及一組 shell 腳本，它為用戶指定的命令列表創建一個同名的包裝器。
+ap 由兩部分組成：一個用 Go 編寫的二進製程序，用於捕獲命令的輸出並支持頁面翻轉；以及一組 shell 腳本，用於為用戶指定的命令列表創建同名的包裝器。
 
-wrap 之後的命令用法和之前一樣，不應該改變用戶的習慣或造成任何問題。
+換行後的命令用法與之前相同，不應改變用戶的習慣或引起任何問題。
 
-\*用其他語言閱讀：[英語](README_en.md),[簡體中文](README.md)
+閱讀其他語言版本：[英語](README.en.md),[簡體中文](README.md),[繁體中文](README.zh-TW.md),[阿拉伯](README.ar.md),[法語](README.fr.md),[沒有](README.hi.md)
 
 ap 是一個 shell 工具，可以讓其它 shell 命令的輸出能夠自動進入交互翻頁模式。
 
@@ -22,10 +22,10 @@ ap 由兩部分組成，一個 Go 語言編寫的二進製程序，負責捕獲�
 ## 配置
 
 -   `bash`（#bash）
--   `fish`（＃魚）
--   `zsh`зш
+-   `fish`(#`fish`)
+-   `zsh`(#`zsh`)
 
-### 重擊
+### 巴什
 
 在你的`~/.bashrc`裡加入下面內容：
 
@@ -47,7 +47,7 @@ AUTO_PAGER_CMDS_EXTRA=(ps last)
 eval "$(ap --bash)"
 ```
 
-另外，ap 也可以和[grc](https://github.com/garabik/grc)一起工作，在 macOS  下可以使用 Homebrew 安裝 grc:
+另外，ap 也可以和[GRC](https://github.com/garabik/grc)一起工作，在 macOS  下可以使用 Homebrew 安裝 grc:
 
 ```sh
 brew install grc
@@ -105,7 +105,7 @@ set AUTO_PAGER_CMDS_EXTRA ps last
 ap --fish | source
 ```
 
-另外，ap 也可以和[grc](https://github.com/garabik/grc)一起工作，在 macOS  下可以使用 Homebrew 安裝 grc:
+另外，ap 也可以和[GRC](https://github.com/garabik/grc)一起工作，在 macOS  下可以使用 Homebrew 安裝 grc:
 
 ```sh
 brew install grc
@@ -163,7 +163,7 @@ AUTO_PAGER_CMDS_EXTRA=(ps last)
 eval "$(ap --zsh)"
 ```
 
-另外，ap 也可以和[grc](https://github.com/garabik/grc)一起工作，在 macOS  下可以使用 Homebrew 安裝 grc:
+另外，ap 也可以和[GRC](https://github.com/garabik/grc)一起工作，在 macOS  下可以使用 Homebrew 安裝 grc:
 
 ```sh
 brew install grc
@@ -210,7 +210,7 @@ eval "$(ap --zsh)"
 
 以下情況並不會啟動分頁器：
 
--   輸出內容過少時，參見`$AUTO_PAGER_MIN_HEIGHT`。
+-   输出内容过少时，参见 `$AUTO_PAGER_MIN_HEIGHT`。
 -   當 ap 檢測到命令輸出中包含`ESC [?1049h`序列時，此時命令被判定為全熒幕應用。
 -   當命令尚未執行完成時。分頁器只有命令執行完成後才會啟動。
     -   `ping`和`tcpdump`等此類命令需要先按`Ctrl-C`終止命令後才會啟動分頁。
@@ -232,5 +232,5 @@ eval "$(ap --zsh)"
     -   不會。
 -   ap 支持像`python`、`gdb`這樣的交互式應用嗎？
     -   支持。但是由於這些應用會輸出一些控製字符，所以分頁後看到的內容可能會有點亂。
--   ap 支持像`htop`、`vim` 这样的全荧幕应用吗？
+-   ap 支持像`htop`、`vim`這樣的全熒幕應用嗎？
     -   怎麼說呢，反正不會出錯，但我想不明白把 ap 和它們搭配在一起有什麼實際意義。
